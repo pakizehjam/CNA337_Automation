@@ -1,18 +1,24 @@
 # This is the template code for the CNA337 Final Project
 # Zachary Rubin, zrubin@rtc.edu
 # CNA 337 Fall 2020
+# I worked with Abdi,Igor, Dorin, Vlado and Saeid on this code.
+# Liviu Patrisco (Liviu_patrisco@hotmail.com) helped us to write the code.
+
+from Server import Server
+
+
 def print_program_info():
     # TODO - Change your name
-    print("Server Automator v0.1 by mohammad Pakizeh jam")
+    print("Server Automator v0.1 by yours")
+
 # This is the entry point to our program
 if __name__ == '__main__':
     print_program_info()
-    # TODO - Create a Server object
-    import os
-    name = "13.58.93.136"
-    response = os.system("ping -n 4 " + name)
-    # TODO - Call Ping method and print the results
-    if response == 0:
-        print(name, 'is up!')
+    ec2_ip_address = "18.220.249.22"
+    server = Server(ec2_ip_address)
+    result = server.ping()
+    print(result)
+    if result == 0:
+        print("Server with ip [%s] is up." % ec2_ip_address)
     else:
-        print(name, 'is down!')
+        print("Server with ip [%s] is down." % ec2_ip_address)
